@@ -1,6 +1,6 @@
 ﻿using System;
 using Apache.NMS;
-using CinemaModelLibrary;
+using AbstractService.dto;
 
 namespace ReservationService
 {

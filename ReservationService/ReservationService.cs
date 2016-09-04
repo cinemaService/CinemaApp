@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using CinemaModelLibrary;
+using AbstractService.db;
+using AbstractService.dto;
 
 namespace ReservationService
 {
@@ -17,16 +18,16 @@ namespace ReservationService
         {
             Reservation res;
             var success = false;
-            using (var db = new Model1Container())
+            using (var db = new DatabaseContext())
             {
                 var reservation =
-                    db.ReservationSet.Where(r => r.SeanceId == reservationDto.SeanceId)
+                    db.Reservations.Where(r => r.SeanceId == reservationDto.SeanceId)
                         .SelectMany(r => r.Spots)
                         .Any(s => reservationDto.Spots.Contains(s.Id));
 
                 if (!reservation)
                 {
-                    var spots = db.SpotSet.Where(spot => reservationDto.Spots.Contains(spot.Id)).ToList();
+                    var spots = db.Spots.Where(spot => reservationDto.Spots.Contains(spot.Id)).ToList();
 
                     res = new Reservation()
                     {
@@ -34,7 +35,7 @@ namespace ReservationService
                         Spots = spots,
                         UserEmail = reservationDto.Email
                     };
-                    db.ReservationSet.Add(res);
+                    db.Reservations.Add(res);
                     success = true;
                     Console.WriteLine("Reservation succeeded.");
                 }

@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AbstractService">
-      <HintPath>..\AbstractService\bin\Debug\AbstractService.dll</HintPath>
+      <HintPath>..\AbstractService\obj\Debug\AbstractService.dll</HintPath>
     </Reference>
     <Reference Include="Apache.NMS, Version=1.7.1.3894, Culture=neutral, PublicKeyToken=82756feee3957618, processorArchitecture=MSIL">
       <HintPath>..\packages\Apache.NMS.1.7.1\lib\net40\Apache.NMS.dll</HintPath>
