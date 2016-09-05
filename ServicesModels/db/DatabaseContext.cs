@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace AbstractService.db
+namespace ServicesModels.db
 {
     public class DatabaseContext : DbContext
     {

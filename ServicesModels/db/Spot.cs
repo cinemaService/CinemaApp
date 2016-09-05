@@ -1,4 +1,4 @@
-﻿namespace AbstractService.db
+﻿namespace ServicesModels.db
 {
     public class Spot
     {

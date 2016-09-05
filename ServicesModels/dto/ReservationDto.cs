@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AbstractService.dto
+namespace ServicesModels.dto
 {
     [Serializable]
     public class ReservationDto

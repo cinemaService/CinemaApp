@@ -1,32 +1,18 @@
-﻿using AbstractService.dto;
-using Apache.NMS;
+﻿using ServicesModels.dto;
+using AbstractService;
+using ReservationServiceModels;
 
 namespace ReservationService
 {
-    public class TransactionService : ActiveMqEndpoint
-    {
-        private IMessageProducer producer;
-
-        public TransactionService(IConnection connection) : base(connection)
+    public class TransactionService : AService<ReservationDto>
+	{
+        public TransactionService(string name) : base(name)
         {
-
-        }
-
-        public TransactionService(IConnection connection, string queue) : this(connection)
-        {
-            Start(queue);
-        }
-
-        public void Start(string queue)
-        {
-            base.Start();
-            producer = session.CreateProducer(session.GetDestination(queue));
         }
 
         public void Send(ReservationDto messageBody)
         {
-            var message = session.CreateObjectMessage(messageBody);
-            producer.Send(message);
+			send(messageBody, Config.TransQueueName, Config.Url);
         }
     }
 }

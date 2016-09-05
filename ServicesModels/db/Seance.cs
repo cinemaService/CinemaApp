@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AbstractService.db
+namespace ServicesModels.db
 {
     public class Seance
     {

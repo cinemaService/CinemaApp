@@ -45,10 +45,15 @@ namespace AbstractService
 			msg.Message = message;
 			msg.MessageType = type;
 			msg.ServiceName = serviceName;
-
-			ConnectionFactory conFactory = new ConnectionFactory(Config.Url);
-			NmsTemplate temp = new NmsTemplate(conFactory);
-			temp.Send(Config.QueueName, new GenericMessageCreator<LogMessage>(msg));
+			send(msg, Config.QueueName, Config.Url);
 		}
+
+		public void send<MSG>(MSG message, string queueName, string url)
+		{
+			ConnectionFactory conFactory = new ConnectionFactory(url);
+			NmsTemplate temp = new NmsTemplate(conFactory);
+			temp.Send(queueName, new GenericMessageCreator<MSG>(message));
+		}
+
 	}
 }

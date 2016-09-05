@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Linq;
-using AbstractService.db;
-using AbstractService.dto;
+using ServicesModels.db;
+using ServicesModels.dto;
+using AbstractService;
+using ReservationServiceModels;
 
 namespace ReservationService
 {
-    public class ReservationService
+    public class ReservationService : AService<ReservationDto>
     {
         private TransactionService transactionService;
 
-        public ReservationService(TransactionService transactionService)
-        {
-            this.transactionService = transactionService;
-        }
+		public ReservationService(TransactionService transactionService, string name) : base(name)
+		{
+			this.transactionService = transactionService;
+		}
 
-        public void Consume(ReservationDto reservationDto)
+		public void listen()
+		{
+			ReservationListener listener = new ReservationListener(this);
+			base.listen(listener, Config.Url, Config.ReservQueueName);
+		}
+
+		public void Consume(ReservationDto reservationDto)
         {
             Reservation res;
             var success = false;
@@ -38,11 +46,13 @@ namespace ReservationService
                     db.Reservations.Add(res);
                     success = true;
                     Console.WriteLine("Reservation succeeded.");
+					writeToLog("Reservation succeeded.");
                 }
                 else
                 {
                     Console.WriteLine("At least one spot is already engaged.");
-                }
+					writeToLog("At least one spot is already engaged.",LoggingServiceModel.LogMessage.LogType.WARNING);
+				}
                 
                 db.SaveChanges();
             }
