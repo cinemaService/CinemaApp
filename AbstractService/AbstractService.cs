@@ -32,6 +32,7 @@ namespace AbstractService
                 Console.WriteLine(info);
 				Console.WriteLine("Press ENTER to exit.");
 				Console.ReadLine();
+				writeToLog("Service shuted down!");
 			}
 			catch (System.Exception e)
 			{
@@ -45,14 +46,17 @@ namespace AbstractService
 			msg.Message = message;
 			msg.MessageType = type;
 			msg.ServiceName = serviceName;
-			send(msg, Config.QueueName, Config.Url);
+			send(msg, Config.QueueName, Config.Url,false);
 		}
 
-		public void send<MSG>(MSG message, string queueName, string url)
+		public void send<MSG>(MSG message, string queueName, string url,bool toLog = true)
 		{
 			ConnectionFactory conFactory = new ConnectionFactory(url);
 			NmsTemplate temp = new NmsTemplate(conFactory);
 			temp.Send(queueName, new GenericMessageCreator<MSG>(message));
+
+			if(toLog)
+				writeToLog("Sended message to " + queueName);
 		}
 
 	}
