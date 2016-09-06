@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationService", "Reser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionService", "TransactionService\TransactionService.csproj", "{08250AA1-B85C-42A6-8DE1-7A44BBC0EA91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{7B943DFE-6BDB-4B80-93B3-2FA6C03CF2DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{08250AA1-B85C-42A6-8DE1-7A44BBC0EA91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08250AA1-B85C-42A6-8DE1-7A44BBC0EA91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08250AA1-B85C-42A6-8DE1-7A44BBC0EA91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B943DFE-6BDB-4B80-93B3-2FA6C03CF2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B943DFE-6BDB-4B80-93B3-2FA6C03CF2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B943DFE-6BDB-4B80-93B3-2FA6C03CF2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B943DFE-6BDB-4B80-93B3-2FA6C03CF2DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
