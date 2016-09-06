@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using ServicesModels.db;
 
 namespace ServicesModels.dto
 {
@@ -12,5 +14,7 @@ namespace ServicesModels.dto
         public int[] Spots { get; set; }
 
         public string Email { get; set; }
+
+        public string TransactionId { get; set; }
     }
 }

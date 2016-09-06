@@ -15,6 +15,8 @@ namespace ServicesModels.db
 
         public DbSet<Spot> Spots { get; set; }
 
+        public DbSet<Transaction> Transactions { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServicesModels.db
 {
+    [Serializable]
     public class Movie
     {
         public int Id { get; set; }

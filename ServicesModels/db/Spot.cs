@@ -1,5 +1,8 @@
-﻿namespace ServicesModels.db
+﻿using System;
+
+namespace ServicesModels.db
 {
+    [Serializable]
     public class Spot
     {
         public int Id { get; set; }

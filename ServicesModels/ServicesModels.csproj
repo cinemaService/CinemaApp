@@ -55,15 +55,48 @@
     <Compile Include="db\Room.cs" />
     <Compile Include="db\Seance.cs" />
     <Compile Include="db\Spot.cs" />
+    <Compile Include="db\Transaction.cs" />
     <Compile Include="dto\ReservationDto.cs" />
     <Compile Include="EmailServiceModels.cs" />
     <Compile Include="LoggingServiceModels.cs" />
+    <Compile Include="Migrations\201609052254351_Initial.cs" />
+    <Compile Include="Migrations\201609052254351_Initial.Designer.cs">
+      <DependentUpon>201609052254351_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609061647323_AddTransaction.cs" />
+    <Compile Include="Migrations\201609061647323_AddTransaction.Designer.cs">
+      <DependentUpon>201609061647323_AddTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609061650201_RemoveTransactionId.cs" />
+    <Compile Include="Migrations\201609061650201_RemoveTransactionId.Designer.cs">
+      <DependentUpon>201609061650201_RemoveTransactionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609061827284_ChangeDateToNullable.cs" />
+    <Compile Include="Migrations\201609061827284_ChangeDateToNullable.Designer.cs">
+      <DependentUpon>201609061827284_ChangeDateToNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationServiceModels.cs" />
+    <Compile Include="TransactionServiceModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609052254351_Initial.resx">
+      <DependentUpon>201609052254351_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609061647323_AddTransaction.resx">
+      <DependentUpon>201609061647323_AddTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609061650201_RemoveTransactionId.resx">
+      <DependentUpon>201609061650201_RemoveTransactionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609061827284_ChangeDateToNullable.resx">
+      <DependentUpon>201609061827284_ChangeDateToNullable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

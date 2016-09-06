@@ -20,5 +20,10 @@ namespace ReservationServiceModels
 		{
 			get { return "ReservationQueue"; }
 		}
+
+	    public static string EmailQueue
+	    {
+	        get { return "EmailQueue"; }
+	    }
 	}
 }

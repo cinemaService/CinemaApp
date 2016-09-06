@@ -1,0 +1,10 @@
+Cinema Service Log
+           Authors: Marek Tokarski, Marcin Knap
+06.09.2016 21:10:11 Reservation Service - RS INFO :    Service started!
+06.09.2016 21:10:11 Logging Service INFO :    Service started!
+06.09.2016 21:10:11 TransactionService INFO :    Service started!
+06.09.2016 21:10:11 E-mail Service INFO :    Service started!
+06.09.2016 21:10:24 Reservation Service - RS INFO :    Service shuted down!
+06.09.2016 21:10:27 TransactionService INFO :    Service shuted down!
+06.09.2016 21:10:30 E-mail Service INFO :    Service shuted down!
+06.09.2016 21:10:36 Logging Service INFO :    Service shuted down!

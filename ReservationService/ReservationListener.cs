@@ -1,10 +1,11 @@
 ﻿using System;
 using ServicesModels.dto;
 using AbstractService;
+using ServicesModels.db;
 
 namespace ReservationService
 {
-	public class ReservationListener : IMessageEventHandler<ReservationDto>
+	public class ReservationListener : IMessageEventHandler<Reservation>
 	{
         private ReservationService reservationService;
 
@@ -13,7 +14,7 @@ namespace ReservationService
             this.reservationService = reservationService;
         }
 
-		public void onMessage(ReservationDto message)
+		public void onMessage(Reservation message)
 		{
             reservationService.Consume(message);
             Console.WriteLine("Message acknowledged!");
