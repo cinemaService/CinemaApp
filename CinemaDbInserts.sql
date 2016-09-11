@@ -8,10 +8,10 @@ CREATE DATABASE [CinemaDb]
  CONTAINMENT = NONE
 
 ALTER DATABASE [CinemaDb] MODIFY FILE
-( NAME = N'CinemaDb' , SIZE = 512-MB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024-KB )
+( NAME = N'CinemaDb' , SIZE = 512MB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
 GO
 ALTER DATABASE [CinemaDb] MODIFY FILE
-( NAME = N'CinemaDb_log' , SIZE = 256-MB , MAXSIZE = UNLIMITED , FILEGROWTH = 10%)
+( NAME = N'CinemaDb_log' , SIZE = 256MB , MAXSIZE = UNLIMITED , FILEGROWTH = 10%)
 GO
 
 ALTER DATABASE [CinemaDb] SET COMPATIBILITY_LEVEL = 120
@@ -308,9 +308,9 @@ GO
 USE [CinemaDb]
 GO
 
-INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES ('Kamienne piêœci','Dwukrotny zdobywca Oscara Robert De Niro („Wœciek³y byk”, „Last Vegas”, „Poradnik pozytywnego myœlenia”) w opowieœci o jednym z najs³ynniejszych bokserów wszech czasów. Roberto Duran wychowuje siê na ulicy, gdzie rz¹dzi prawo piêœci. Umiejêtnoœci, które zdobywa walcz¹c o przetrwanie, staj¹ siê jego przepustk¹ do lepszego œwiata. Na profesjonalnym ringu pojawia siê po raz pierwszy w wieku 16 lat i nied³ugo po tym zyskuje przydomek Manos de Piedra, czyli Kamienne piêœci.')
-INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES ('Smoleñsk','Antoni Krauze, twórca wielokrotnie nagrodzonego dramatu historycznego „Czarny Czwartek. Janek Wiœniewski pad³”, ods³ania kulisy tragedii, która wstrz¹snê³a ca³¹ Polsk¹. Poruszaj¹c¹ muzykê do filmu skomponowa³ Micha³ Lorenc, autor oprawy dŸwiêkowej takich produkcji, jak: „Poznañ 56”, „Historia Roja”, „Przedwioœnie” i „Czarny Czwartek. Janek Wiœniewski pad³”.')
-INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES ('Siedmiu wspania³ych','Armia bandytów  terroryzuje ma³¹ wioskê na pograniczu amerykañsko-meksykañskim. Zrozpaczeni farmerzy zwracaj¹ siê z proœb¹ o pomoc do grupy rewolwerowców. Siedmiu najemników postanawia stawiæ czo³o przewa¿aj¹cym si³om przeciwnika, choæ wydaj¹ siê nie mieæ szans. Czy najtwardsi rewolwerowcy bêd¹ w stanie uwolniæ wioskê spod bandyckich rz¹dów? Czy zapewni¹ mieszkañcom spokój i bezpieczeñstwo?')
+INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES (N'Kamienne piêœci',N'Dwukrotny zdobywca Oscara Robert De Niro („Wœciek³y byk”, „Last Vegas”, „Poradnik pozytywnego myœlenia”) w opowieœci o jednym z najs³ynniejszych bokserów wszech czasów. Roberto Duran wychowuje siê na ulicy, gdzie rz¹dzi prawo piêœci. Umiejêtnoœci, które zdobywa walcz¹c o przetrwanie, staj¹ siê jego przepustk¹ do lepszego œwiata. Na profesjonalnym ringu pojawia siê po raz pierwszy w wieku 16 lat i nied³ugo po tym zyskuje przydomek Manos de Piedra, czyli Kamienne piêœci.')
+INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES (N'Smoleñsk',N'Antoni Krauze, twórca wielokrotnie nagrodzonego dramatu historycznego „Czarny Czwartek. Janek Wiœniewski pad³”, ods³ania kulisy tragedii, która wstrz¹snê³a ca³¹ Polsk¹. Poruszaj¹c¹ muzykê do filmu skomponowa³ Micha³ Lorenc, autor oprawy dŸwiêkowej takich produkcji, jak: „Poznañ 56”, „Historia Roja”, „Przedwioœnie” i „Czarny Czwartek. Janek Wiœniewski pad³”.')
+INSERT INTO [dbo].[Movies]([Title],[Description]) VALUES (N'Siedmiu wspania³ych',N'Armia bandytów  terroryzuje ma³¹ wioskê na pograniczu amerykañsko-meksykañskim. Zrozpaczeni farmerzy zwracaj¹ siê z proœb¹ o pomoc do grupy rewolwerowców. Siedmiu najemników postanawia stawiæ czo³o przewa¿aj¹cym si³om przeciwnika, choæ wydaj¹ siê nie mieæ szans. Czy najtwardsi rewolwerowcy bêd¹ w stanie uwolniæ wioskê spod bandyckich rz¹dów? Czy zapewni¹ mieszkañcom spokój i bezpieczeñstwo?')
 GO
 INSERT INTO [dbo].[Rooms]([Number]) VALUES('Sala 1')
 INSERT INTO [dbo].[Rooms]([Number]) VALUES('Sala 2')
@@ -318,12 +318,12 @@ INSERT INTO [dbo].[Rooms]([Number]) VALUES('Sala 3')
 INSERT INTO [dbo].[Rooms]([Number]) VALUES('Sala 4')
 
 GO
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25-T18:00:00',1,1)
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25-T18:00:00',2,2)
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25-T18:00:00',3,3)
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26-T20:00:00',1,4)
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26-T20:00:00',2,1)
-INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26-T20:00:00',3,2)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25T18:00:00',1,1)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25T18:00:00',2,2)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-25T18:00:00',3,3)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26T20:00:00',1,4)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26T20:00:00',2,1)
+INSERT INTO [dbo].[Seances]([Date],[MovieId],[RoomId]) VALUES ('2016-09-26T20:00:00',3,2)
 GO
 
 INSERT INTO [dbo].[Spots]([Number],[RoomId])VALUES ('1-A' ,1)
