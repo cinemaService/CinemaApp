@@ -7,7 +7,7 @@ namespace Models.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ServicesModels.db.DatabaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DatabaseContext>
     {
         public Configuration()
         {
@@ -48,49 +48,49 @@ namespace Models.Migrations
                 new Spot()
                 {
                     Id = 1,
-                    Number = "1A",
+                    Number = "1-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 2,
-                    Number = "2A",
+                    Number = "2-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 3,
-                    Number = "3A",
+                    Number = "3-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 4,
-                    Number = "4A",
+                    Number = "4-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 5,
-                    Number = "5A",
+                    Number = "5-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 6,
-                    Number = "6A",
+                    Number = "6-A",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 7,
-                    Number = "1B",
+                    Number = "1-B",
                     RoomId = 1
                 },
                 new Spot()
                 {
                     Id = 8,
-                    Number = "2B",
+                    Number = "2-B",
                     RoomId = 1
                 });
 
