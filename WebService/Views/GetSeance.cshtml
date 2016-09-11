@@ -1,0 +1,39 @@
+﻿@model WebService.Models.Reservation
+
+@{
+    ViewBag.Title = "Reservation";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Reserve", "Reservation", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+
+    var rows = Model.Spots.GroupBy(s =>
+            {
+                var split = s.Number.Split('-');
+                return split[1];
+            });
+
+    foreach (var row in rows)
+    {
+        <div class="row">
+            @foreach (var spot in row)
+            {
+                var disabled = spot.Reserved ? "disabled" : "";
+                <div class="col checkboxes">
+                    <input type="checkbox" name="spots" value="@spot.Id" id="@spot.Number" @disabled />
+                    <label class="check-spot" for="@spot.Number">@spot.Number</label>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+}

@@ -22,3 +22,26 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.col {
+    display: inline-block;
+}
+
+.check-spot{
+    background-color: green;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+.checkboxes input[type=checkbox]{
+    display: none;
+}
+
+.checkboxes input[type=checkbox]:checked + .check-spot{
+    background-color: blue;
+}
+
+.checkboxes input[type=checkbox]:disabled + .check-spot{
+    background-color: red;
+}

@@ -1,10 +1,20 @@
 Cinema Service Log
            Authors: Marek Tokarski, Marcin Knap
-06.09.2016 21:10:11 Reservation Service - RS INFO :    Service started!
-06.09.2016 21:10:11 Logging Service INFO :    Service started!
-06.09.2016 21:10:11 TransactionService INFO :    Service started!
-06.09.2016 21:10:11 E-mail Service INFO :    Service started!
-06.09.2016 21:10:24 Reservation Service - RS INFO :    Service shuted down!
-06.09.2016 21:10:27 TransactionService INFO :    Service shuted down!
-06.09.2016 21:10:30 E-mail Service INFO :    Service shuted down!
-06.09.2016 21:10:36 Logging Service INFO :    Service shuted down!
+11.09.2016 23:33:20 Reservation Service - RS INFO :    Sended message to ReservationQueue
+11.09.2016 23:33:20 Reservation Service - RS INFO :    Service started!
+11.09.2016 23:33:20 Reservation Service - RS INFO :    Reservation request received.
+11.09.2016 23:33:20 Logging Service INFO :    Service started!
+11.09.2016 23:33:20 TransactionService INFO :    Service started!
+11.09.2016 23:33:20 E-mail Service INFO :    Service started!
+11.09.2016 23:33:31 Reservation Service - RS ERROR :    The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Reservations_dbo.Seances_SeanceId". The conflict occurred in database "CinemaDb", table "dbo.Seances", column 'Id'.
+The statement has been terminated.
+11.09.2016 23:34:53 Reservation Service - RS INFO :    Service shuted down!
+11.09.2016 23:35:29 Reservation Service - RS INFO :    Sended message to ReservationQueue
+11.09.2016 23:35:29 Reservation Service - RS INFO :    Service started!
+11.09.2016 23:35:33 Reservation Service - RS INFO :    Reservation request received.
+11.09.2016 23:36:31 Reservation Service - RS ERROR :    The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Reservations_dbo.Seances_SeanceId". The conflict occurred in database "CinemaDb", table "dbo.Seances", column 'Id'.
+The statement has been terminated.
+11.09.2016 23:37:02 Reservation Service - RS INFO :    Service shuted down!
+11.09.2016 23:37:06 TransactionService INFO :    Service shuted down!
+11.09.2016 23:37:09 E-mail Service INFO :    Service shuted down!
+11.09.2016 23:37:12 Logging Service INFO :    Service shuted down!
