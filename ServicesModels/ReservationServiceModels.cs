@@ -25,5 +25,11 @@ namespace ReservationServiceModels
 	    {
 	        get { return "EmailQueue"; }
 	    }
+
+		public static string DbName
+		{
+			get { return "CinemaDb"; }
+		}
+
 	}
 }

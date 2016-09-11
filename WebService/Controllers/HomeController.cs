@@ -4,14 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ServicesModels.dto;
+using ServicesModels.db;
 
 namespace WebService.Controllers
 {
     public class HomeController : Controller
     {
+
+		DatabaseContext db = new DatabaseContext();
+
         public ActionResult Index()
         {
-            return View();
+			var movies = db.Movies.ToList();
+			return View(movies);
         }
 
         public ActionResult About()

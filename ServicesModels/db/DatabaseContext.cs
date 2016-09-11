@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
+using System.Data.SqlClient;
+using ReservationServiceModels;
 namespace ServicesModels.db
 {
     public class DatabaseContext : DbContext
@@ -17,7 +19,13 @@ namespace ServicesModels.db
 
         public DbSet<Transaction> Transactions { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		public DatabaseContext() : base(Config.DbName)
+		{
+			var name = Config.DbName;
+			var i = 0;
+        }
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Entity<Reservation>()

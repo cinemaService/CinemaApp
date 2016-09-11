@@ -5,6 +5,8 @@ using ServicesModels.dto;
 using AbstractService;
 using LoggingServiceModel;
 using Config = ReservationServiceModels.Config;
+using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 
 namespace ReservationService
 {
@@ -21,17 +23,29 @@ namespace ReservationService
 
 		public void listen()
 		{
+			Reservation reservation = new Reservation();
+			reservation.UserEmail = "marcknap@interia.eu";
+			reservation.SeanceId = 1;
+			List<Spot> spots = new List<Spot>();
+			Spot i = new Spot();
+			i.Number = "1A";
+			i.RoomId = 1;
+			spots.Add(i);
+			reservation.Spots = spots;
+			send(reservation, Config.ReservQueueName, Config.Url);
 			ReservationListener listener = new ReservationListener(this);
 			base.listen(listener, Config.Url, Config.ReservQueueName);
 		}
 
 		public void Consume(Reservation reservationDto)
         {
-            Reservation res = null;
-            var success = false;
+			Console.WriteLine("Reservation request received.");
+			writeToLog("Reservation request received.");
+
+			var success = false;
             using (var db = new DatabaseContext())
             {
-                var reservedSpots = db.Reservations
+				var reservedSpots = db.Reservations
                     .Where(r => r.SeanceId == reservationDto.SeanceId)
                     .SelectMany(r => r.Spots)
                     .ToList();
@@ -44,17 +58,26 @@ namespace ReservationService
                     reservationDto.Spots = db.Spots.Where(s => spotsId.Contains(s.Id)).ToList();
                     db.Reservations.Add(reservationDto);
                     success = true;
-                    Console.WriteLine("Reservation succeeded.");
-					writeToLog("Reservation succeeded.");
                 }
                 else
                 {
                     Console.WriteLine("At least one spot is already engaged.");
 					writeToLog("At least one spot is already engaged.", LogMessage.LogType.WARNING);
 				}
-                
-                db.SaveChanges();
-            }
+
+				try {
+					db.SaveChanges();
+				}
+				catch(DbUpdateException e)
+				{
+					Console.WriteLine(e.InnerException.InnerException.Message);
+					writeToLog(e.InnerException.InnerException.Message,LogMessage.LogType.ERROR);
+					return;
+                }
+
+				Console.WriteLine("Reservation succeeded.");
+				writeToLog("Reservation succeeded.");
+			}
 
             if (success)
             {
