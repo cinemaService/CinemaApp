@@ -1,0 +1,40 @@
+﻿@model ServicesModels.db.Movie
+
+@{
+    ViewBag.Title = "Film";
+}
+
+<h2>Wybierz termin:</h2>
+
+<div>
+    <hr />
+    <dl>
+        <dt>
+        </dt>
+
+        <dd>
+            <img class="picture" src="@string.Format("/Resources/{0}", Model.Cover)">
+        </dd>
+        <dt>
+            Tytuł:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            Opis:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+@{Html.RenderAction("Seans", Model);}
+
+<p>
+    @Html.ActionLink("Wróć do strony głównej", "../Home/Index")
+</p>

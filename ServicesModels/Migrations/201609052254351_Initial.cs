@@ -14,6 +14,7 @@ namespace Models.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Description = c.String(),
+						Cover = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

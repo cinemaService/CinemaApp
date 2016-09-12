@@ -45,3 +45,9 @@ textarea {
 .checkboxes input[type=checkbox]:disabled + .check-spot{
     background-color: red;
 }
+
+.cell{
+    text-align: center;
+    vertical-align: middle;
+
+}

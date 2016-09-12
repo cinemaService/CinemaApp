@@ -6,19 +6,41 @@ using System.Web;
 using System.Web.Mvc;
 using WebService.Models;
 
+
 namespace WebService.Controllers
 {
     public class ReservationController : Controller
     {
-        // GET: Reservation
-        public ActionResult Index()
-        {
-            return View();
-        }
+		ServicesModels.db.DatabaseContext db = new ServicesModels.db.DatabaseContext();
 
-        public ActionResult GetSeance(int id)
+		// GET: Reservation
+		public PartialViewResult Seans(ServicesModels.db.Movie movie)
+		{
+			return PartialView(
+							db.Seances
+								.Where(s => s.MovieId == movie.Id)
+								.OrderBy(s => s.Date)
+								.ToList());
+		}
+
+		public ActionResult Film(int? id)
+		{
+			if (id == null)
+				return RedirectToAction("Index", "Home");
+
+			var movie = db.Movies
+				.Where(m => m.Id == id)
+				.Single();
+
+			return View(movie);
+		}
+
+        public ActionResult GetSeance(int? id)
         {
-            Spot[] spots =
+			if (id == null)
+				return RedirectToAction("Index", "Home");
+
+			Spot[] spots =
             {
                 new Spot()
                 {

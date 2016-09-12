@@ -34,7 +34,8 @@ namespace Models.Migrations
                 {
                     Id = 1,
                     Title = "First try",
-                    Description = "Always hurts"
+                    Description = "Always hurts",
+					Cover = "default.jpg"
                 });
 
             context.Rooms.AddOrUpdate(
