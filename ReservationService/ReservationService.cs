@@ -23,16 +23,6 @@ namespace ReservationService
 
 		public void listen()
 		{
-			Reservation reservation = new Reservation();
-			reservation.UserEmail = "marcknap@interia.eu";
-			reservation.SeanceId = 1;
-			List<Spot> spots = new List<Spot>();
-			Spot i = new Spot();
-			i.Number = "1A";
-			i.RoomId = 1;
-			spots.Add(i);
-			reservation.Spots = spots;
-			send(reservation, Config.ReservQueueName, Config.Url);
 			ReservationListener listener = new ReservationListener(this);
 			base.listen(listener, Config.Url, Config.ReservQueueName);
 		}

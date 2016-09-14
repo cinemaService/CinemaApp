@@ -5,69 +5,71 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebService.Models;
-
+using ServicesModels;
 
 namespace WebService.Controllers
 {
     public class ReservationController : Controller
     {
-		ServicesModels.db.DatabaseContext db = new ServicesModels.db.DatabaseContext();
-
-		// GET: Reservation
-		public PartialViewResult Seans(ServicesModels.db.Movie movie)
-		{
-			return PartialView(
-							db.Seances
-								.Where(s => s.MovieId == movie.Id)
-								.OrderBy(s => s.Date)
-								.ToList());
-		}
-
-		public ActionResult Film(int? id)
-		{
-			if (id == null)
-				return RedirectToAction("Index", "Home");
-
-			var movie = db.Movies
-				.Where(m => m.Id == id)
-				.Single();
-
-			return View(movie);
-		}
-
-        public ActionResult GetSeance(int? id)
+        ServicesModels.db.DatabaseContext database = new ServicesModels.db.DatabaseContext();
+        
+        // GET: Reservation
+        public PartialViewResult Seans(ServicesModels.db.Movie movie)
         {
-			if (id == null)
-				return RedirectToAction("Index", "Home");
+            return PartialView(
+                            database.Seances
+                                .Where(s => s.MovieId == movie.Id)
+                                .OrderBy(s => s.Date)
+                                .ToList());
+        }
 
-			Spot[] spots =
+        public ActionResult Film(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index", "Home");
+
+            var movie = database.Movies
+                .Where(m => m.Id == id)
+                .Single();
+
+            return View(movie);
+        }
+
+        public ActionResult Seats(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index", "Home");
+
+            ServicesModels.db.Spot[] reservedSpots = database.Reservations
+                .Where(r => r.SeanceId == id)
+                .SelectMany(r => r.Spots)
+                .OrderBy(s => s.Id)
+                .ToArray();
+
+            List<ServicesModels.db.Spot> allSpots = database.Seances
+                .Where(s => s.Id == id)
+                .Select(s => s.Room)
+                .SelectMany(r => r.Spots)
+                .ToList();  
+               
+            List<Spot> webSpots = new List<Spot>();
+
+            foreach(var spot in allSpots)
             {
-                new Spot()
+                bool reserved = reservedSpots.Any(s => s.Id == spot.Id);
+                webSpots.Add(new Spot()
                 {
-                    Id = 1,
-                    Number = "1-A"
-                },
-                new Spot()
-                {
-                    Id = 2,
-                    Number = "2-A"
-                },
-                new Spot()
-                {
-                    Id = 3,
-                    Number = "1-B"
-                },
-                new Spot()
-                {
-                    Id = 4,
-                    Number = "2-B",
-                    Reserved = true
-                }
-            };
+                    Id = spot.Id,
+                    Number = spot.Number,
+                    Reserved = reserved,
+                });
+            }
+
+
             var reservation = new Reservation()
             {
-                Spots = new List<Spot>(spots)
-                
+                Spots = new List<Spot>(webSpots),
+                SeanceId = (int)id
             };
 
             return View(reservation);
@@ -76,18 +78,27 @@ namespace WebService.Controllers
         [HttpPost]
         public ActionResult Reserve()
         {
+            ReservationSender sender = new ReservationSender("WebService");
             var spots = Request.Form.GetValues("spots");
             var email = Request.Form.Get("Email");
-
-            var reervation = new Reservation()
+            var id = int.Parse(Request.Form.Get("SeanceId"));
+            var reservation = new Reservation()
             {
+                SeanceId = id,
                 Email = email,
-                Spots = spots.Select(s => new Spot()
-                {
-                    Id = int.Parse(s)
-                }).ToList()
             };
+            int roomId = database.Rooms
+                            .Where(r => r.Id == id)
+                            .Single()
+                            .Id;
 
+            List<ServicesModels.db.Spot> dbSpots = database.Spots
+                                                        .Where(s => s.RoomId == roomId)
+                                                        .Where(s => spots.Contains(s.Id.ToString()))
+                                                        .ToList();
+                                                    
+
+            sender.send(dbSpots,reservation);
             return RedirectToAction("Index", "Home");
         }
     }

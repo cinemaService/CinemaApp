@@ -1,31 +1,25 @@
 ﻿@model IEnumerable<ServicesModels.db.Seance>
+<div>
+    <hr />
+    <br />
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-primary btn-lg active"
+                       href=@Url.Action("../Reservation/Seats" , new { id = item.Id })>
+                        Wybierz >>
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Room.Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Movie.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Room.Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>

@@ -7,6 +7,8 @@ namespace WebService.Models
 {
     public class Reservation
     {
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
+        public int SeanceId { get; set; }
         public string Email { get; set; }
         public List<Spot> Spots { get; set; }
     }

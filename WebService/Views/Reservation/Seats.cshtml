@@ -10,12 +10,13 @@
 {
     @Html.LabelFor(m => m.Email)
     @Html.TextBoxFor(m => m.Email)
-
+    @Html.EditorFor(m => m.SeanceId)
+  
     var rows = Model.Spots.GroupBy(s =>
-            {
-                var split = s.Number.Split('-');
-                return split[1];
-            });
+    {
+        var split = s.Number.Split('-');
+        return split[1];
+    });
 
     foreach (var row in rows)
     {
