@@ -87,10 +87,10 @@ namespace WebService.Controllers
                 SeanceId = id,
                 Email = email,
             };
-            int roomId = database.Rooms
-                            .Where(r => r.Id == id)
+            int roomId = database.Seances
+                            .Where(s => s.Id == id)
                             .Single()
-                            .Id;
+                            .RoomId;
 
             List<ServicesModels.db.Spot> dbSpots = database.Spots
                                                         .Where(s => s.RoomId == roomId)
