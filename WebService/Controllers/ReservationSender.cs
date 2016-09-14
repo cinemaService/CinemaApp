@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AbstractService;
 using ReservationServiceModels;
-using WebService.Models;
+using ServicesModels.db;
+using Reservation = WebService.Models.Reservation;
 
 namespace WebService.Controllers
 {
@@ -20,7 +21,10 @@ namespace WebService.Controllers
             ServicesModels.db.Reservation reservationDb = new ServicesModels.db.Reservation()
             {
                 SeanceId = request.SeanceId,
-                Spots = dbSpots,
+                Spots = dbSpots.Select(s => new Spot()
+                {
+                    Id = s.Id
+                }).ToList(),
                 UserEmail = request.Email
             };
 
