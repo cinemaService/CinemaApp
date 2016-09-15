@@ -1,0 +1,52 @@
+Cinema Service Log
+           Authors: Marek Tokarski, Marcin Knap
+15.09.2016 17:04:37 Logging Service INFO :    Service started!
+15.09.2016 17:04:38 TransactionService INFO :    Service started!
+15.09.2016 17:04:38 E-mail Service INFO :    Service started!
+15.09.2016 17:04:38 Reservation Service - RS INFO :    Service started!
+15.09.2016 17:04:56 Reservation Service - RS INFO :    Reservation request received.
+15.09.2016 17:04:56 WebService INFO :    Reservation request sended
+15.09.2016 17:04:57 Reservation Service - RS INFO :    Reservation succeeded.
+15.09.2016 17:04:57 Transaction Service - RS INFO :    Sended message to TransactionQueue
+15.09.2016 17:04:57 Transaction Service - RS INFO :    Information send to Transaction Service
+15.09.2016 17:04:57 Email Service - RS INFO :    Sended message to EmailQueue
+15.09.2016 17:04:57 Email Service - RS INFO :    Prepare an email with reservation
+15.09.2016 17:04:57 Reservation Service - RS INFO :    Reservation performed correctly
+15.09.2016 17:04:58 EmailService INFO :    Sended message to EmailQueue
+15.09.2016 17:04:58 EmailService INFO :    Send email with transaction link
+15.09.2016 17:04:58 TransactionService INFO :    Transaction created correctly
+15.09.2016 17:05:17 Reservation Service - RS INFO :    Reservation request received.
+15.09.2016 17:05:17 Reservation Service - RS INFO :    Reservation succeeded.
+15.09.2016 17:05:17 WebService INFO :    Reservation request sended
+15.09.2016 17:05:17 Transaction Service - RS INFO :    Sended message to TransactionQueue
+15.09.2016 17:05:17 Transaction Service - RS INFO :    Information send to Transaction Service
+15.09.2016 17:05:17 EmailService INFO :    Sended message to EmailQueue
+15.09.2016 17:05:17 EmailService INFO :    Send email with transaction link
+15.09.2016 17:05:17 Email Service - RS INFO :    Sended message to EmailQueue
+15.09.2016 17:05:17 TransactionService INFO :    Transaction created correctly
+15.09.2016 17:05:17 Email Service - RS INFO :    Prepare an email with reservation
+15.09.2016 17:05:17 Reservation Service - RS INFO :    Reservation performed correctly
+15.09.2016 17:05:19 E-mail Service INFO :    Email has been sent to: marcknap@interia.eu
+15.09.2016 17:05:20 E-mail Service INFO :    Email has been sent to: marcknap@interia.eu
+15.09.2016 19:30:09 Reservation Service - RS INFO :    Reservation request received.
+15.09.2016 19:30:09 WebService INFO :    Reservation request sended
+15.09.2016 19:30:09 Reservation Service - RS INFO :    Reservation succeeded.
+15.09.2016 19:30:09 Transaction Service - RS INFO :    Sended message to TransactionQueue
+15.09.2016 19:30:09 Transaction Service - RS INFO :    Information send to Transaction Service
+15.09.2016 19:30:09 Email Service - RS INFO :    Sended message to EmailQueue
+15.09.2016 19:30:09 Email Service - RS INFO :    Prepare an email with reservation
+15.09.2016 19:30:09 EmailService INFO :    Sended message to EmailQueue
+15.09.2016 19:30:09 Reservation Service - RS INFO :    Reservation performed correctly
+15.09.2016 19:30:09 EmailService INFO :    Send email with transaction link
+15.09.2016 19:30:09 TransactionService INFO :    Transaction created correctly
+15.09.2016 19:30:11 E-mail Service INFO :    Email has been sent to: marcknap@interia.eu
+15.09.2016 19:30:12 E-mail Service INFO :    Email has been sent to: marcknap@interia.eu
+15.09.2016 19:30:54 Reservation Service - RS INFO :    Reservation request received.
+15.09.2016 19:30:54 Reservation Service - RS INFO :    Reservation succeeded.
+15.09.2016 19:30:54 Transaction Service - RS INFO :    Sended message to TransactionQueue
+15.09.2016 19:30:54 WebService INFO :    Reservation request sended
+15.09.2016 19:30:54 Transaction Service - RS INFO :    Information send to Transaction Service
+15.09.2016 19:30:54 EmailService INFO :    Sended message to EmailQueue
+15.09.2016 19:30:54 EmailService INFO :    Send email with transaction link
+15.09.2016 19:30:54 Email Service - RS INFO :    Sended message to EmailQueue
+15.09.2016 19:30:54 TransactionService INFO : 
