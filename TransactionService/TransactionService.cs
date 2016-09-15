@@ -18,7 +18,7 @@ namespace TransactionService
         public void listen()
         {
             ApprovedReservationListener listener = new ApprovedReservationListener(this);
-            base.listen(listener, Config.Url, Config.TransQueueName);
+            base.listen(listener, Config.Url, Config.CreateTransQueueName);
         }
 
         public void Consume(ReservationDto reservationDto)

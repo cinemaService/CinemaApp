@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AbstractService;
 using ReservationServiceModels;
 using ServicesModels.db;
 using Reservation = WebService.Models.Reservation;
 
-namespace WebService.Controllers
+namespace WebService.Logic
 {
     class ReservationSender : AService<ServicesModels.db.Reservation>
     {

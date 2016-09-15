@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebService.Models;
 using ServicesModels;
+using WebService.Logic;
 
 namespace WebService.Controllers
 {

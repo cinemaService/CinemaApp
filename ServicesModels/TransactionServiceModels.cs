@@ -13,9 +13,14 @@ namespace TransactionServiceModels
             get { return "tcp://localhost:61616/"; }
         }
 
-        public static string TransQueueName
+        public static string CreateTransQueueName
         {
-            get { return "TransactionQueue"; }
+            get { return "CreateTransactionQueue"; }
+        }
+
+        public static string ConfirmTransQueueName
+        {
+            get { return "ConfirmTransactionQueue"; }
         }
 
         public static string EmailQueue

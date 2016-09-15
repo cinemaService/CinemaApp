@@ -1,0 +1,43 @@
+﻿@model ServicesModels.db.Transaction
+
+@{
+    ViewBag.Title = "Transaction";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<ul>
+    <li>
+        <p>Transaction id: </p>
+        <p>@Model.Id</p></li>
+    <li>
+        <p>Reservation E-mail: </p>
+        <p>@Model.UserEmail</p></li>
+    <li>
+        <p>Reservation Details: </p>
+        <div>
+            <ol>
+                <li>Movie: @Model.Reservation.Seance.Movie.Title</li>
+                <li>Room: @Model.Reservation.Seance.Room.Number</li>
+                <li>Spots: @foreach (var spot in Model.Reservation.Spots)
+                           {
+                               <p>@spot.Number </p>
+                           }
+                </li>
+                <li>Date and Time: @Model.Reservation.Seance.Date</li>
+            </ol>
+        </div>
+    </li>
+    <li>Price: @Model.Price</li>
+</ul>
+
+@using (Html.BeginForm("Pay", "Transaction", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id);
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Pay" class="btn btn-default" />
+        </div>
+    </div>
+}
