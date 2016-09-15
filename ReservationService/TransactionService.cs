@@ -22,7 +22,7 @@ namespace ReservationService
                 SeanceId = messageBody.SeanceId,
                 Spots = messageBody.Spots.Select(s => s.Id).ToArray()
             };
-			send(reservationDto, Config.CreateTransQueueName, Config.Url);
+			send(reservationDto, Config.TransactionQueueName, Config.Url);
             Console.WriteLine("Information send to Transaction Service");
             writeToLog("Information send to Transaction Service");
         }

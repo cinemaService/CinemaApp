@@ -12,9 +12,9 @@ namespace ReservationServiceModels
 		{
 			get { return "tcp://localhost:61616/"; }
 		}
-		public static string CreateTransQueueName
+		public static string TransactionQueueName
 		{
-			get { return "CreateTransactionQueue"; }
+			get { return "TransactionQueue"; }
 		}
 		public static string ReservQueueName
 		{

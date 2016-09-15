@@ -51,6 +51,7 @@ namespace ReservationService
                 }
                 else
                 {
+                    emailService.SendRejection(reservationDto);
                     Console.WriteLine("At least one spot is already engaged.");
 					writeToLog("At least one spot is already engaged.", LogMessage.LogType.WARNING);
 				}

@@ -23,6 +23,16 @@ namespace ReservationService
             writeToLog("Prepare an email with reservation");
         }
 
+        public void SendRejection(Reservation reservation)
+        {
+            base.send(new Email()
+            {
+                Receiver = reservation.UserEmail,
+                Header = "Reservation rejected",
+                Text = PrepareBody(reservation) + "\n At least one spot is already engaged."
+            }, ReservationServiceModels.Config.EmailQueue, Config.Url);
+        }
+
         private static string PrepareBody(Reservation reservation)
         {
             string body = reservation.SeanceId.ToString() + " spots: ";

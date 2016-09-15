@@ -22,7 +22,7 @@ namespace WebService.Logic
                 TransactionDate = DateTime.Now
             };
 
-            send(transaction, Config.ConfirmTransQueueName, Config.Url);
+            send(transaction, Config.TransactionQueueName, Config.Url);
             writeToLog($"Transaction with id: {transaction.Id} confirmed");
         }
     }

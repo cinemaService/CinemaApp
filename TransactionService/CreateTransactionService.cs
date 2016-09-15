@@ -6,19 +6,20 @@ using TransactionServiceModels;
 
 namespace TransactionService
 {
-    class TransactionService : AService<ReservationDto>
+    class CreateTransactionService : AService<object>
     {
         private EmailService emailService;
 
-        public TransactionService(EmailService emailService, string serviceName) : base(serviceName)
+        public CreateTransactionService(EmailService emailService, string serviceName) : base(serviceName)
         {
             this.emailService = emailService;
         }
 
         public void listen()
         {
-            ApprovedReservationListener listener = new ApprovedReservationListener(this);
-            base.listen(listener, Config.Url, Config.CreateTransQueueName);
+            ConfirmTransactionService confirmTransactionService = new ConfirmTransactionService(emailService, "ConfirmTransactionService");
+            ApprovedReservationListener listener = new ApprovedReservationListener(this, confirmTransactionService);
+            base.listen(listener, Config.Url, Config.TransactionQueueName);
         }
 
         public void Consume(ReservationDto reservationDto)
@@ -46,9 +47,9 @@ namespace TransactionService
         static void Main(string[] args)
         {
             EmailService emailService = new EmailService("EmailService");
-            TransactionService transactionService = new TransactionService(emailService, "TransactionService");
+            CreateTransactionService _createTransactionService = new CreateTransactionService(emailService, "CreateTransactionService");
 
-            transactionService.listen();
+            _createTransactionService.listen();
         }
     }
 }

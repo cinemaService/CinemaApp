@@ -5,18 +5,27 @@ using ServicesModels.dto;
 
 namespace TransactionService
 {
-    class ApprovedReservationListener : IMessageEventHandler<ReservationDto>
+    class ApprovedReservationListener : IMessageEventHandler<object>
     {
-        private TransactionService transactionService;
+        private CreateTransactionService _createTransactionService;
+        private ConfirmTransactionService confirmTransactionService;
 
-        public ApprovedReservationListener(TransactionService transactionService)
+        public ApprovedReservationListener(CreateTransactionService _createTransactionService, ConfirmTransactionService confirmTransactionService)
         {
-            this.transactionService = transactionService;
+            this._createTransactionService = _createTransactionService;
+            this.confirmTransactionService = confirmTransactionService;
         }
 
-        public void onMessage(ReservationDto message)
+        public void onMessage(object message)
         {
-            transactionService.Consume(message);
+            if (message is ReservationDto)
+            {
+                _createTransactionService.Consume((ReservationDto) message);
+            }
+            else if (message is TransactionDto)
+            {
+                confirmTransactionService.Consume((TransactionDto) message);
+            }
             Console.WriteLine("Message acknowledged!");
         }
     }

@@ -53,9 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovedReservationListener.cs" />
+    <Compile Include="ConfirmTransactionService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransactionService.cs" />
+    <Compile Include="CreateTransactionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
