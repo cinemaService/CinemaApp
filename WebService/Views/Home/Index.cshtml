@@ -6,12 +6,12 @@
 
 <div class="jumbotron">
     <h1>CinemaApp</h1>
-    <p class="lead">Projekt systemu, który pozwala rezerwacje biletów na film do kina</p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <h2>Lista filmów:</h2>
+        <br/>
             @{ 
                <table class="table table-hover">
 
@@ -19,13 +19,13 @@
                {
                 <tr>
                     <td class="cell">
-                        <img class="picture" src="/Resources/@movie.Cover">
+                        <img class="cell-picture" src="/Resources/@movie.Cover">
                     </td>
                     <td  class="cell">
-                        <h4>@movie.Title</h4>
+                        <h4 class="content">@movie.Title</h4>
                     </td>
                     <td  class="cell">
-                        <a class="btn btn-default"
+                        <a class="btn btn-primary content "
                            href=@Url.Action("../Reservation/Film" , new { id = movie.Id })>
                             Rezerwuj >>
                         </a>

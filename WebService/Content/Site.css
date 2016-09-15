@@ -46,8 +46,59 @@ textarea {
     background-color: red;
 }
 
-.cell{
+div
+{
+    font-family:  "Helvetica Neue";
+}
+h2{
+     font-family:  "Helvetica Neue";
+     font-size: 50px;
+}
+.cell
+{
     text-align: center;
-    vertical-align: middle;
+    vertical-align: central;
+    min-width: 200px;
+    max-height:100px;
+}
+.cell-picture
+{
+    height: 150px;
+}
+.picture{
+    max-height:300px;
+     margin-top: 50px;
+}
+.FilmRow
+{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: -20px;
+}
+.FilmDesc
+{
+    margin-top: 50px;
+}
 
+.content
+{
+     vertical-align: central;
+     margin-top: 55px;
+}
+
+.seats-view
+{
+    text-align:center;
+    margin: 50px;
+}
+.room-view
+{
+    margin-top: 50px;
+}
+.form-view
+{
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:150px;
+    margin-left:-180px;
 }

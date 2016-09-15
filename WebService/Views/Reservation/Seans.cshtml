@@ -1,22 +1,21 @@
 ﻿@model IEnumerable<ServicesModels.db.Seance>
-<div>
-    <hr />
-    <br />
+<div class="seats-view">
+
     <table class="table">
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    <a class="btn btn-primary btn-lg active"
+                    <h4>@Html.DisplayFor(modelItem => item.Room.Number)</h4>
+                </td>
+                <td>
+                    <h5>@Html.DisplayFor(modelItem => item.Date)</h5>
+                </td>
+                <td>
+                    <a class="btn btn-primary"
                        href=@Url.Action("../Reservation/Seats" , new { id = item.Id })>
-                        Wybierz >>
+                        Dalej  >>
                     </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Room.Number)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
             </tr>
         }

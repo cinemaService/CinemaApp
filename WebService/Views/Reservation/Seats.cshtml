@@ -4,38 +4,54 @@
     ViewBag.Title = "Reservation";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Wybierz miejsca</h2>
 
-@using (Html.BeginForm("Reserve", "Reservation", FormMethod.Post))
+@using (Html.BeginForm("Reserve", "Reservation", FormMethod.Post, new { @onsubmit = "return checkIsEmpty(this);" }))
 {
-    @Html.LabelFor(m => m.Email)
-    @Html.TextBoxFor(m => m.Email)
     @Html.EditorFor(m => m.SeanceId)
-  
+
     var rows = Model.Spots.GroupBy(s =>
     {
         var split = s.Number.Split('-');
         return split[1];
     });
+    <div class="room-view">
+        @foreach (var row in rows)
+        {
+            <div class="row seats-view">
+                @foreach (var spot in row)
+                {
+                    var disabled = spot.Reserved ? "disabled" : "";
 
-    foreach (var row in rows)
-    {
-        <div class="row">
-            @foreach (var spot in row)
-            {
-                var disabled = spot.Reserved ? "disabled" : "";
-
-                <div class="col checkboxes">
-                    <input type="checkbox" name="spots" value="@spot.Id" id="@spot.Number" @disabled />
-                    <label class="check-spot" for="@spot.Number">@spot.Number</label>
-                </div>
-            }
-        </div>
-    }
-
-    <div class="form-group">
+                    <div class="col checkboxes">
+                        <input type="checkbox" name="spots" value="@spot.Id" id="@spot.Number" @disabled />
+                        <label class="check-spot" for="@spot.Number">@spot.Number</label>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="form-group form-view">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <b>Twój adres e-mail:</b> @Html.TextBoxFor(m => m.Email)
+            <input type="submit" value="Zarezerwuj" class="btn btn-primary" />
         </div>
     </div>
 }
+
+<script>
+
+function Correct() {
+    alert("CinamaApp service:\n Rezerwacja została przyjęta do realizacji! \n Oczekuj wiadomości e-mail z potwierdzeniem.");
+}
+
+function checkIsEmpty(field) {
+    var mystring = document.getElementById('Email').value;
+    if (!mystring.match(/\S/)) {
+        alert('Podaj adres e-mail!');
+        return false;
+    }
+   Correct();
+   return true;  
+}
+</script>

@@ -4,34 +4,22 @@
     ViewBag.Title = "Film";
 }
 
-<h2>Wybierz termin:</h2>
-
 <div>
-    <hr />
-    <dl>
-        <dt>
-        </dt>
-
-        <dd>
+    <div class="jumbotron">
+        <div>
+            <h2><b class="FilmDesc">@Html.DisplayFor(model => model.Title)</b></h2>
+        </div>
+        <div >
             <img class="picture" src="@string.Format("/Resources/{0}", Model.Cover)">
-        </dd>
-        <dt>
-            Tytuł:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            Opis:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
+        </div>
+        <div class=" FilmDesc">
+            <h4><b>Opis:</b></h4>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+        </div>
+    </div>
 </div>
+<br />
+<h3>Wybierz termin:</h3>
 
 @{Html.RenderAction("Seans", Model);}
 

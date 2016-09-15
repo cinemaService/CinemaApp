@@ -96,8 +96,7 @@ namespace WebService.Controllers
             List<ServicesModels.db.Spot> dbSpots = database.Spots
                                                         .Where(s => s.RoomId == roomId)
                                                         .Where(s => spots.Contains(s.Id.ToString()))
-                                                        .ToList();
-                                                    
+                                                        .ToList();                              
 
             sender.send(dbSpots,reservation);
             return RedirectToAction("Index", "Home");
