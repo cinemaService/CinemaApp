@@ -14,7 +14,7 @@ namespace ServicesModels.db
         public int Id { get; set; }
         public string UserEmail { get; set; }
         public int SeanceId { get; set; }
-        
+        public DateTime ReservationDate { get; set; }
         public virtual ICollection<Spot> Spots { get; set; }
         public virtual Seance Seance { get; set; }
     }

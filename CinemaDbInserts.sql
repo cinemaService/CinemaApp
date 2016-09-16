@@ -134,6 +134,7 @@ CREATE TABLE [dbo].[Reservations](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[UserEmail] [nvarchar](max) NULL,
 	[SeanceId] [int] NOT NULL,
+    [ReservationDate] [datetime] NOT NULL,
  CONSTRAINT [PK_dbo.Reservations] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

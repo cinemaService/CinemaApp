@@ -48,7 +48,8 @@ namespace TransactionService
         {
             EmailService emailService = new EmailService("EmailService");
             CreateTransactionService _createTransactionService = new CreateTransactionService(emailService, "CreateTransactionService");
-
+            CancellingReservationService canceler = new CancellingReservationService("Cancelling Service");
+            canceler.Run();
             _createTransactionService.listen();
         }
     }

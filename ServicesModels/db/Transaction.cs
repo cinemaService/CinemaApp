@@ -9,9 +9,7 @@ namespace ServicesModels.db
         public string UserEmail { get; set; }
         public DateTime? TransactionDate { get; set; }
         public double Price { get; set; }
-
         public int ReservationId { get; set; }
-
         public virtual Reservation Reservation { get; set; }
     }
 }

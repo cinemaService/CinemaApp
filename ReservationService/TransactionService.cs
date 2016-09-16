@@ -20,7 +20,8 @@ namespace ReservationService
                 Id = messageBody.Id,
                 Email = messageBody.UserEmail,
                 SeanceId = messageBody.SeanceId,
-                Spots = messageBody.Spots.Select(s => s.Id).ToArray()
+                Spots = messageBody.Spots.Select(s => s.Id).ToArray(),
+                
             };
 			send(reservationDto, Config.TransactionQueueName, Config.Url);
             Console.WriteLine("Information send to Transaction Service");

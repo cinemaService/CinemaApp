@@ -8,6 +8,14 @@ namespace TransactionServiceModels
 {
     public static class Config
     {
+        public static int PeriodLengthTime
+        {
+            get { return 30; }
+        }
+        public static int CancelReservationTime
+        {
+            get { return 20; }
+        }
         public static string Url
         {
             get { return "tcp://localhost:61616/"; }

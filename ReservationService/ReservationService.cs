@@ -46,6 +46,7 @@ namespace ReservationService
                 {
                     var spotsId = reservationDto.Spots.Select(s => s.Id).ToArray();
                     reservationDto.Spots = db.Spots.Where(s => spotsId.Contains(s.Id)).ToList();
+                    reservationDto.ReservationDate = DateTime.Now;
                     db.Reservations.Add(reservationDto);
                     success = true;
                 }
