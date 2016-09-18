@@ -8,6 +8,7 @@ using TransactionServiceModels;
 using ServicesModels.db;
 using System.Threading;
 using System.Reactive.Linq;
+using System.Reactive;
 
 namespace TransactionService
 {
@@ -24,20 +25,13 @@ namespace TransactionService
 
         public void Run()
         {
-            IObservable<long> observable = Observable.Interval(TimeSpan.FromSeconds(Config.PeriodLengthTime));
-
-            // Token for cancelation
-            CancellationTokenSource source = new CancellationTokenSource();
-
-            // Create task to execute.
-            Action action = (() => CheckReservationDate());
-
-            observable.Subscribe(x => {
-                Task task = new Task(action); task.Start();
-            }, source.Token);
+             Observable
+                .Interval(TimeSpan.FromSeconds(Config.PeriodLengthTime))
+                .Timestamp()
+                .Subscribe(CheckReservationDate);
         }
 
-        void CheckReservationDate()
+        private void CheckReservationDate(Timestamped<long> _)
         {
             var dbReservations = database.Reservations
                                          .Join(database.Transactions,
@@ -54,23 +48,22 @@ namespace TransactionService
                 if (elapsed > Config.CancelReservationTime)
                 {
                     CancelReservation(res.Reservation);
+                  //  database.Transactions.Remove(res.Transaction);
+                    database.Reservations.Remove(res.Reservation);
                 }
             }
-            Console.WriteLine("gggg");
             database.SaveChanges();
             writeToLog("All reservations checked! Everybody paid!");
-            Console.WriteLine("gggg");
         }
 
         void CancelReservation(Reservation res)
         {
+            writeToLog(string.Format("Reservation with Id: {0} for User: {1} cancelled!", res.Id, res.UserEmail));
             EmailServiceModels.Email email = new EmailServiceModels.Email();
             email.Header = emailHeader;
             email.Text = emailText;
             email.Receiver = res.UserEmail;
             send(email, EmailServiceModels.Config.QueueName, EmailServiceModels.Config.Url, false);
-            writeToLog(string.Format("Reservation with Id: {0} for User: {1} cancelled!", res.Id, res.UserEmail));
-            database.Reservations.Remove(res);
         }
     }
 }

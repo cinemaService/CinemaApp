@@ -274,6 +274,7 @@ ALTER TABLE [dbo].[Reservations] CHECK CONSTRAINT [FK_dbo.Reservations_dbo.Seanc
 GO
 ALTER TABLE [dbo].[ReservationSpotMapping]  WITH CHECK ADD  CONSTRAINT [FK_dbo.ReservationSpotMapping_dbo.Reservations_ReservationId] FOREIGN KEY([ReservationId])
 REFERENCES [dbo].[Reservations] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[ReservationSpotMapping] CHECK CONSTRAINT [FK_dbo.ReservationSpotMapping_dbo.Reservations_ReservationId]
 GO
@@ -311,11 +312,6 @@ GO
 ALTER DATABASE [CinemaDb] SET  READ_WRITE 
 GO
 
-
-USE [CinemaDb]
-GO
-USE [CinemaDb]
-GO
 USE [CinemaDb]
 GO
 

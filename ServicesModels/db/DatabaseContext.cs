@@ -22,7 +22,6 @@ namespace ServicesModels.db
 		public DatabaseContext() : base(Config.DbName)
 		{
 			var name = Config.DbName;
-			var i = 0;
         }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
