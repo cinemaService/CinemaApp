@@ -36,8 +36,13 @@
             <p>&copy; @DateTime.Now.Year - CinemaApp (projekt KSR)</p>
         </footer>
     </div>
+    <div class="container">
+        <ul id="discussion"></ul>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
+<script src="/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/websocket")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

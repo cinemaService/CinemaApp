@@ -13,7 +13,7 @@ namespace AbstractService
 	{
 		void onMessage(T message);
 	}
-	class GenericMessageListener<T> : IMessageListener
+	public class GenericMessageListener<T> : IMessageListener
 	{
 		IMessageEventHandler<T> eventHandler;
 

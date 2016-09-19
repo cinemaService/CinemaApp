@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using WebService.Worker;
 
 [assembly: OwinStartupAttribute(typeof(WebService.Startup))]
 namespace WebService
@@ -9,6 +10,8 @@ namespace WebService
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
+            ReservationWorker.GetInstance();
         }
     }
 }

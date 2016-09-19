@@ -14,11 +14,13 @@ namespace ReservationService
     {
         private TransactionService transactionService;
         private EmailService emailService;
+        private MessageService messageService;
 
-		public ReservationService(TransactionService transactionService, EmailService emailService, string name) : base(name)
+		public ReservationService(TransactionService transactionService, EmailService emailService, MessageService messageService, string name) : base(name)
 		{
 			this.transactionService = transactionService;
 		    this.emailService = emailService;
+		    this.messageService = messageService;
 		}
 
 		public void listen()
@@ -71,20 +73,26 @@ namespace ReservationService
 				writeToLog("Reservation succeeded.");
 			}
 
-            if (success)
-            {
-                transactionService.Send(reservationDto);
-                emailService.Send(reservationDto);
-                Console.WriteLine("Reservation performed correctly");
-                writeToLog("Reservation performed correctly");
-            }
+		    if (success)
+		    {
+		        transactionService.Send(reservationDto);
+		        emailService.Send(reservationDto);
+		        messageService.Send(reservationDto.UserEmail, "Reservation performed successfully");
+		        Console.WriteLine("Reservation performed correctly");
+		        writeToLog("Reservation performed correctly");
+		    }
+		    else
+		    {
+		        messageService.Send(reservationDto.UserEmail, "At least one spot was already engaged");
+		    }
         }
 
 		static void Main(string[] args)
 		{
 			TransactionService tranService = new TransactionService("Transaction Service - RS");
             EmailService emailService = new EmailService("Email Service - RS");
-			ReservationService service = new ReservationService(tranService, emailService, "Reservation Service - RS");
+            MessageService messageService = new MessageService("Message Service - RS");
+			ReservationService service = new ReservationService(tranService, emailService, messageService, "Reservation Service - RS");
 			service.listen();
 		}
 	}
