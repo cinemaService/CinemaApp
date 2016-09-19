@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebService.Models;
 using ServicesModels;
 using WebService.Logic;
 
 namespace WebService.Controllers
 {
+    [Authorize]
     public class ReservationController : Controller
     {
         ServicesModels.db.DatabaseContext database = new ServicesModels.db.DatabaseContext();
         
         // GET: Reservation
+        [AllowAnonymous]
         public PartialViewResult Seans(ServicesModels.db.Movie movie)
         {
             return PartialView(
@@ -24,6 +27,7 @@ namespace WebService.Controllers
                                 .ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult Film(int? id)
         {
             if (id == null)
@@ -70,8 +74,10 @@ namespace WebService.Controllers
             var reservation = new Reservation()
             {
                 Spots = new List<Spot>(webSpots),
-                SeanceId = (int)id
+                SeanceId = (int)id,
+                Email =  User.Identity.Name
             };
+
 
             return View(reservation);
         }
