@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+=======
+Cinema Service Log
+           Authors: Marek Tokarski, Marcin Knap
+18.09.2016 21:19:47 Reservation Service - RS INFO :    Service shuted down!
+18.09.2016 21:19:47 CreateTransactionService INFO :    Service shuted down!
+18.09.2016 21:19:47 E-mail Service INFO :    Service shuted down!
+18.09.2016 21:19:47 Reservation Service - RS INFO :    Service started!
+18.09.2016 21:19:47 Logging Service INFO :    Service started!
+18.09.2016 21:19:47 E-mail Service INFO :    Service started!
+18.09.2016 21:19:47 CreateTransactionService INFO :    Service started!
+18.09.2016 21:21:40 Reservation Service - RS INFO :    Reservation request received.
+18.09.2016 21:21:40 WebService INFO :    Reservation request sended
+18.09.2016 21:21:41 Reservation Service - RS INFO :    Reservation succeeded.
+18.09.2016 21:21:41 Transaction Service - RS INFO :    Sended message to TransactionQueue
+18.09.2016 21:21:41 Transaction Service - RS INFO :    Information send to Transaction Service
+18.09.2016 21:21:41 Email Service - RS INFO :    Sended message to EmailQueue
+18.09.2016 21:21:41 Email Service - RS INFO :    Prepare an email with reservation
+18.09.2016 21:21:41 Reservation Service - RS INFO :    Reservation performed correctly
+18.09.2016 21:21:41 EmailService INFO :    Sended message to EmailQueue
+18.09.2016 21:21:41 EmailService INFO :    Send email with transaction link
+18.09.2016 21:21:41 CreateTransactionService INFO :    Transaction created correctly
+18.09.2016 21:21:43 E-mail Service INFO :    Email has been sent to: mautokar@gmail.com
+18.09.2016 21:21:44 E-mail Service INFO :    Email has been sent to: mautokar@gmail.com
+18.09.2016 21:22:19 WebService INFO :    Sended message to TransactionQueue
+18.09.2016 21:22:19 WebService INFO :    Transaction with id: 4 confirmed
+18.09.2016 21:22:19 EmailService INFO :    Sended message to EmailQueue
+18.09.2016 21:22:20 E-mail Service INFO :    Email has been sent to: mautokar@gmail.com
+18.09.2016 23:53:35 Logging Service INFO :    Service shuted down!
+>>>>>>> WebSocket

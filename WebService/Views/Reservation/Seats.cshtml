@@ -33,25 +33,16 @@
     </div>
     <div class="form-group form-view">
         <div class="col-md-offset-2 col-md-10">
-            <b>Twój adres e-mail:</b> @Html.TextBoxFor(m => m.Email)
+            <b>Twój adres e-mail:</b> @Html.TextBoxFor(m => m.Email, new {@readonly = "readonly"})
+            <input type="button" value="Zmień e-mail" class="btn" onclick="unblock()"/>
+        </div>
+    </div>
+
+    <div class="form-group form-view">
+        <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Zarezerwuj" class="btn btn-primary" />
         </div>
     </div>
 }
 
-<script>
-
-function Correct() {
-    alert("CinamaApp service:\n Rezerwacja została przyjęta do realizacji! \n Oczekuj wiadomości e-mail z potwierdzeniem.");
-}
-
-function checkIsEmpty(field) {
-    var mystring = document.getElementById('Email').value;
-    if (!mystring.match(/\S/)) {
-        alert('Podaj adres e-mail!');
-        return false;
-    }
-   Correct();
-   return true;  
-}
-</script>
+@Scripts.Render("~/bundles/local")
