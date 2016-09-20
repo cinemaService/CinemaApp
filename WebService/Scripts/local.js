@@ -15,4 +15,5 @@ function checkIsEmpty(field) {
 function unblock() {
     var email = document.getElementById('Email');
     email.readOnly = false;
+    email.focus();
 }
